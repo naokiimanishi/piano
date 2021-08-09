@@ -1,0 +1,495 @@
+$breakpoints: ( 'sm': 'screen and (min-width: 400px)', 'md': 'screen and (min-width: 768px)', 'lg': 'screen and (min-width: 1000px)', 'xl': 'screen and (min-width: 1200px)', ) !default;
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+$main-color:#60412b;
+$sub-color:#3c455c;
+$accent-color: #687672;
+$white:#fff;
+$black:#000;
+@mixin btn ($color) {
+    transform: rotate(135deg) translate(-50%);
+    content: "";
+    top: 50%;
+    right: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    border-top: 1px $color solid;
+    border-left: 1px $color solid;
+    width: 5px;
+    height: 5px;
+}
+
+html {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 62.5%;
+    background-color: $white;
+}
+
+
+/*
+@mixin sp() {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+@mixin pc() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+.title {
+    font-size: 1.8rem;
+    padding: 1.5rem;
+    font-weight: bold;
+    @include mq(sm) {
+        font-size: 2.5rem;
+        font-weight: bold;
+        padding: 2rem;
+    }
+    @include mq(md) {
+        font-size: 3rem;
+        font-weight: bold;
+        padding: 2.5rem;
+    }
+    @include mq(lg) {
+        font-size: 3.5rem;
+        font-weight: bold;
+        padding: 3rem;
+    }
+    @include mq(xl) {
+        font-size: 4rem;
+        font-weight: bold;
+        padding: 4rem;
+    }
+}
+
+.sub {
+    font-size: 1.6rem;
+    padding: 1rem;
+    @include mq(sm) {
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
+    @include mq(md) {
+        font-size: 2.2rem;
+        padding: 1.5rem;
+    }
+    @include mq(lg) {
+        font-size: 2.5rem;
+        padding: 2rem;
+    }
+    @include mq(xl) {
+        font-size: 3rem;
+        padding: 3rem;
+    }
+}
+
+.text {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    @include mq(sm) {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+    }
+    @include mq(md) {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    @include mq(lg) {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    @include mq(xl) {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+}
+
+.inner-common {
+    padding: 2rem 0;
+    @include mq(sm) {
+        padding: 2.5rem 0;
+    }
+    @include mq(md) {
+        padding: 3rem 0;
+    }
+    @include mq(lg) {
+        padding: 3.5rem 0;
+    }
+    @include mq(xl) {
+        padding: 4.5rem 0;
+    }
+}
+
+.header {
+    width: 100%;
+    background-color: $main-color;
+    color: $white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    .header-inner {
+        text-align: center;
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        height: 70px;
+        @include mq(sm) {
+            text-align: center;
+        }
+        @include mq(md) {
+            text-align: center;
+        }
+        @include mq(lg) {
+            text-align: initial;
+            display: flex;
+            align-items: center;
+        }
+        @include mq(xl) {
+            text-align: initial;
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        .header-navi {
+            margin-left: auto;
+            display: none;
+            @include mq(sm) {
+                display: none;
+            }
+            @include mq(md) {
+                display: none;
+            }
+            @include mq(lg) {
+                display: none;
+            }
+            @include mq(xl) {
+                display: block;
+            }
+            ul {
+                display: flex;
+                align-items: center;
+            }
+        }
+        .menu {
+            @include mq(sm) {
+                display: block;
+            }
+            @include mq(md) {
+                display: block;
+            }
+            @include mq(lg) {
+                display: block;
+            }
+            @include mq(xl) {
+                display: none;
+            }
+            cursor: pointer;
+            margin-left: auto;
+            padding: 0 8px;
+            margin-right: -8px;
+            span {
+                display: block;
+                width: 30px;
+                height: 2px;
+                border-radius: 5px/5px;
+                margin: 8px 0;
+                background-color: $white;
+            }
+        }
+    }
+}
+
+.main {
+    margin-top: 70px;
+    .kv {
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: url(../img/img01.jpg);
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        .kv-inner {
+            text-align: center;
+            width: 100%;
+            background-color: rgba($color: #FFF, $alpha: 0.7);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            h1 {
+                font-weight: inherit;
+            }
+            a {
+                display: inline-block;
+                position: relative;
+                padding: 1em 2em 1em 1em;
+                box-sizing: border-box;
+                transition: 0.5s;
+                background-color: $accent-color;
+                color: $white;
+                &::before {
+                    position: absolute;
+                    top: 50%;
+                    right: 1em;
+                    width: 0.5em;
+                    height: 0.5em;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-right: 2px solid $white;
+                    border-top: 2px solid $white;
+                    content: "";
+                }
+            }
+        }
+    }
+}
+
+.news {
+    width: 100%;
+    .about-inner {
+        margin: 0 auto;
+        width: 90%;
+        h2 {
+            font-weight: initial;
+            text-align: center;
+        }
+        ul {
+            width: 100%;
+            li {
+                width: 100%;
+                border-bottom: 1px solid rgb(189, 189, 189);
+                a {
+                    margin-top: 0.8em;
+                    font-size: 1.2rem;
+                    @include mq(sm) {
+                        font-size: 1.2rem;
+                    }
+                    @include mq(md) {
+                        font-size: 1.4rem;
+                    }
+                    @include mq(lg) {
+                        font-size: 1.8rem;
+                    }
+                    @include mq(xl) {
+                        font-size: 2rem;
+                    }
+                    padding: 0.8em 0;
+                    display: block;
+                     :nth-child(1) {
+                        display: none;
+                        @include mq(sm) {
+                            display: none;
+                        }
+                        @include mq(md) {
+                            display: inline-block;
+                            width: 20%;
+                            text-align: center;
+                        }
+                        @include mq(lg) {
+                            display: inline-block;
+                            width: 20%;
+                            text-align: center;
+                        }
+                        @include mq(xl) {
+                            display: inline-block;
+                            width: 20%;
+                            text-align: center;
+                        }
+                    }
+                     :nth-child(2) {
+                        display: inline-block;
+                        width: 100%;
+                        @include mq(sm) {
+                            display: inline-block;
+                            width: 100%;
+                        }
+                        @include mq(md) {
+                            display: inline-block;
+                            width: 70%;
+                        }
+                        @include mq(lg) {
+                            display: inline-block;
+                            width: 70%;
+                        }
+                        @include mq(xl) {
+                            display: inline-block;
+                            width: 70%;
+                        }
+                    }
+                }
+            }
+        }
+        .btn {
+            margin: 2rem 0;
+            text-align: right;
+            a {
+                position: relative;
+                display: inline-block;
+                border: 1px solid #ddd;
+                background-color: $white;
+                padding: 1em 2em 1em 1em;
+                &::before {
+                    position: absolute;
+                    top: 50%;
+                    right: 1em;
+                    width: 0.5em;
+                    height: 0.5em;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-right: 1px solid $black;
+                    border-top: 1px solid $black;
+                    content: "";
+                }
+            }
+        }
+    }
+}
+
+.about {
+    background-color: $sub-color;
+    color: $white;
+    .about-inner {
+        margin: 0 auto;
+        text-align: center;
+        width: 90%;
+        h2 {
+            font-weight: initial;
+        }
+        h3 {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.lesson {
+    width: 100%;
+    .lesson-inner {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .lesson-head {
+            width: 100%;
+            text-align: center;
+            h2 {
+                font-weight: initial;
+            }
+        }
+        .lesson-middle {
+            width: 100%;
+            padding: 2em 0;
+            table {
+                width: 100%;
+                border-spacing: 0;
+                text-align: center;
+                font-size: 1.2rem;
+                @include mq(sm) {
+                    font-size: 1.2rem;
+                }
+                @include mq(md) {
+                    font-size: 1.4rem;
+                }
+                @include mq(lg) {
+                    font-size: 1.8rem;
+                }
+                @include mq(xl) {
+                    font-size: 2rem;
+                }
+                tbody {
+                    tr {
+                        th {
+                            border-bottom: solid 2px $sub-color;
+                            padding: 1em 0;
+                            text-align: center;
+                            width: 33.3%;
+                        }
+                        td {
+                            border-bottom: solid 2px #ddd;
+                            padding: 1em 0;
+                            width: 33.3%;
+                        }
+                    }
+                }
+            }
+        }
+        .lesson-bottom {
+            margin: 2rem 0 2rem auto;
+            text-align: right;
+            a {
+                position: relative;
+                display: inline-block;
+                border: 1px solid #ddd;
+                background-color: $white;
+                padding: 1em 2em 1em 1em;
+                &::before {
+                    position: absolute;
+                    top: 50%;
+                    right: 1em;
+                    width: 0.5em;
+                    height: 0.5em;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-right: 1px solid $black;
+                    border-top: 1px solid $black;
+                    content: "";
+                }
+            }
+        }
+    }
+}
+
+.access {
+    color: $white;
+    background-color: $accent-color;
+    width: 100%;
+    .title {
+        text-align: center;
+        font-weight: initial;
+    }
+    p {
+        text-align: center;
+    }
+    .googlemap {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 56.25%;
+        @include mq(sm) {
+            padding-top: 56.25%;
+        }
+        @include mq(md) {
+            padding-top: 56.25%;
+        }
+        @include mq(lg) {
+            padding-top: 25%;
+        }
+        @include mq(xl) {
+            padding-top: 25%;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    background-color: $main-color;
+    color: $white;
+}
