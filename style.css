@@ -355,10 +355,17 @@ html {
 .main .kv {
   width: 100%;
   height: calc(100vh - 70px);
-  background: url(img/img01.jpg);
+  position: relative;
+}
+
+.main .kv::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: url(img/img01.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 
 .main .kv .kv-inner {
